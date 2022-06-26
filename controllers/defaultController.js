@@ -1,6 +1,6 @@
-module.exports =  {
+module.exports = {
 
-    getHomePage : (req,res) =>{
-        res.render('delete')
+    getHomePage: (req, res) => {
+        res.render('main')
     }
 }
