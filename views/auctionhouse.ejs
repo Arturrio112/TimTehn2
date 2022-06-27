@@ -46,7 +46,28 @@
         </div>
     </nav>
     <section class="container-xxl">
-
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th scope="col">Item</th>
+                <th scope="col">Decription</th>
+                <th scope="col">Current Highest price</th>
+                <th scope="col">Bid</th>
+            </tr>
+            <% for(const obj of data) {%>
+                <tr>
+                    <td>
+                        <%= obj.name %>
+                    </td>
+                    <td>
+                        <%= obj.text %>
+                    </td>
+                    <td>
+                        <%= obj.description %>
+                    </td>
+                    <td><a href="/itemAuction" class="btn btn-primary">Bid</a></td>
+                </tr>
+                <% } %>
+        </table>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
