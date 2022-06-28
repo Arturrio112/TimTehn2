@@ -65,7 +65,24 @@
                                             <button type="submit" class="btn btn-primary btn-lg">Log In</button>
                                         </div>
                                     </form>
+                                    <% if(typeof message !="undefined" && message) { %>
 
+                                        <div class="mt-5 mb-3">
+
+                                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+
+                                                <strong>
+                                                    <%= message %>
+                                                </strong>
+
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                    aria-label="Close"></button>
+
+                                            </div>
+
+                                        </div>
+
+                                        <% } %>
                                 </div>
 
                             </div>
@@ -75,6 +92,7 @@
             </div>
         </div>
     </section>
+
 </body>
 
 </html>
