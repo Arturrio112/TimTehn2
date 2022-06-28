@@ -1,24 +1,45 @@
-module.exports = {
+const Product = require('../models/product')
 
-    getHomePage: (req, res) => {
-        res.render('main')
-    },
-    getLogIN: (req, res) => {
-        res.render('login')
-    },
-    getSignUP: (req, res) => {
-        res.render('signUp')
-    },
-    getAuctionHouse: (req, res) => {
-        res.render('auctionhouse')
-    },
-    getProfile: (req, res) => {
-        res.render('profile')
-    },
-    getItem: (req, res) => {
-        res.render('item')
-    },
-    getAuctionItem: (req, res) => {
-        res.render('itemAuction')
-    }
+const getIndex = async (req,res) =>{
+    let data = await Product.getAllProducts()
+    res.render('index', {data})
+}
+const getProduct = async (req,res) =>{
+    
+    const {id} = req.params
+    let data = await Product.getProductWithID(id)
+    res.render('product', {data})
+}
+const getUpdateProduct = async (req,res) =>{
+    const {id} = req.params
+    let data = await Product.getProductWithID(id)
+    res.render('updateProduct', {data})
+}
+const updateProduct = async (req,res) =>{
+    //res.render('index')
+}
+
+const deleteProduct = async (req,res) =>{
+    const {id} = req.params
+    await Product.deleteProduct(id)
+    
+    req.flash('success', 'Product DELETED!');
+    res.redirect('/');
+}
+const getCreateProduct = async (req,res) =>{
+    //res.render('index')
+}
+const createProduct = async (req,res) =>{
+    //res.render('index')
+}
+
+module.exports = {
+    getIndex,
+    getProduct,
+    getUpdateProduct,
+    updateProduct,
+    deleteProduct,
+    getCreateProduct,
+    createProduct,
+
 }
