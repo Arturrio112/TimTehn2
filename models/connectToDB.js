@@ -1,5 +1,5 @@
 require('dotenv').config()
-const sql = require('mssql')
+
 
 const config = {
     user: process.env.USER,
