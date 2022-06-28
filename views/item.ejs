@@ -10,15 +10,19 @@
 
 <body>
     <section class="container-xxl">
-        <div class="card w-100">
-            <div class="card-body">
-                <h5 class="card-title">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-5 text-center text-md-starty">
+                <h5 class="display-3">
                     <%= obj.name %>
                 </h5>
-                <p class="card-text">
+                <p class="lead my-4">
                     <%=obj.description %>
                 </p>
-                <a href="#" class="btn btn-primary"></a>
+                <h2>Current highest price:</h2>
+                <h2>
+                    <%=obj.price%>$
+                </h2>
+                <a href="#" class="btn btn-primary">Buy</a>
             </div>
         </div>
     </section>

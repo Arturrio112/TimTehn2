@@ -1,0 +1,27 @@
+<section class="container-xxl">
+    <div class="text-center">
+        <h1 class="display-1 fw-bolder">Ongoing Sales</h1>
+    </div>
+</section>
+
+<section class="container-xxl">
+    <div class="card-group justify-content-center align-content-center my-5 g-4">
+        <% for(const obj of data) {%>
+            <div class="col-8 col-lg-4 d-flex align-items-stretch">
+                <div class="card border-2 border-dark">
+                    <img class="card-img-top" src="/img/logg.png" alt="Card image ">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">
+                            <%= obj.name%>
+                        </h5>
+                        <p class="card-text">
+                            <%= obj.description%>
+                        </p>
+                        <a href="/product/<%= data[0].productID %> " class="btn btn-primary">Check Out</a>
+                    </div>
+
+                </div>
+            </div>
+            <% } %>
+    </div>
+</section>
