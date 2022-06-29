@@ -26,7 +26,8 @@
 
                                     <form class="mx-1 mx-md-4" method="POST">
                                         <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="Switch">
+
+                                            <input class="form-check-input" type="checkbox" id="Switch" name="check1">
                                             <label class="form-check-label" for="Switch">Make listing on
                                                 Auction House</label>
                                         </div>
@@ -45,12 +46,15 @@
                                                 <label class="form-label" for="price">Price</label>
                                             </div>
                                         </div>
-                                        <div class="d-flex flex-row align-items-center mb-4">
+
+                                        <div class="d-flex flex-row align-items-center mb-4" style="visibility: hidden"
+                                            name="change">
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="number" id="endDate" class="form-control" name="endDate" />
+                                                <input type="text" id="endDate" class="form-control" name="endDate" />
                                                 <label class="form-label" for="endDate">Auction ends</label>
                                             </div>
                                         </div>
+
                                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                                             <button type="button" class="btn btn-primary btn-lg">Create</button>
                                         </div>
@@ -65,6 +69,17 @@
             </div>
         </div>
     </section>
+    <script>
+        var checkbox = document.querySelector("input[name=check1]");
+
+        checkbox.addEventListener('change', function () {
+            if (this.checked) {
+                document.querySelector("div[name=change]").style.visibility = "visible"
+            } else {
+                document.querySelector("div[name=change]").style.visibility = "hidden"
+            }
+        });
+    </script>
 </body>
 
 </html>

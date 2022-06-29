@@ -32,7 +32,7 @@
                         <a class="nav-link text-light fs-4 fw-bold" href="auctionhouse.ejs">Action House</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light fs-4 fw-bold" href="loggedIn.ejs">Sales</a>
+                        <a class="nav-link text-light fs-4 fw-bold" href="/">Sales</a>
                     </li>
                     <li class="nav-item d-md-none ">
                         <a class="nav-link text-light" href="/logout">Log Out</a>
@@ -49,20 +49,54 @@
         <div class="text-start">
             <h1 class="fw-bold">Account Details</h1>
             <h2>Email</h2>
-            <h3>sss</h3>
+            <h3>
+                <%= obj.email %>
+            </h3>
             <h2>Name</h2>
-            <h3>sss</h3>
-            <button class="btn btn-primary">Show sales</button>
-            <button class="btn btn-secondary">Show auction house listings</button>
-            <button class="btn btn-info" onclick="location.href='createlisting.ejs'">Create listing</button>
+            <h3>
+                <%= obj.name %>
+            </h3>
+            <h2>Phone number</h2>
+            <h3>
+                <%= obj.phone %>
+            </h3>
+            <button class="btn btn-primary" auction="">Show sales</button>
+            <button class="btn btn-secondary" auction="">Show auction house listings</button>
+            <button class="btn btn-info" auction="/product/create">Create listing</button>
         </div>
-    </section>
-    <section class="d-none">
 
     </section>
-    <section class="d-none">
-
+    <section class="container-xxl">
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th scope="col">Item ID</th>
+                <th scope="col">Item</th>
+                <th scope="col">Decription</th>
+                <th scope="col">Price</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+            </tr>
+            <% for(const obj of data) {%>
+                <tr>
+                    <td>
+                        <%= obj.id %>
+                    </td>
+                    <td>
+                        <%= obj.name %>
+                    </td>
+                    <td>
+                        <%= obj.text %>
+                    </td>
+                    <td>
+                        <%= obj.description %>
+                    </td>
+                    <td><a href="/product/edit/:id" class="btn btn-primary">edit</a></td>
+                    <td><a href="/product/:id" class="btn btn-primary" method="delete">Delete</a></td>
+                </tr>
+                <% } %>
+        </table>
     </section>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
