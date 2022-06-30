@@ -7,23 +7,39 @@ const getRegisterPage =  async (req,res) =>{
 }
 
 const register = async (req,res) =>{
+
+    
     
     try{
-        const {password, username, email, telephone } = req.body
-       
-        let data = await  User.findByEmail(email)
-        let doesAccExist = data.length == 0 ? false : true
+        const {name, email, password, telephone} = req.body
         
+        if(req.files){
+
+            var file = req.files.file
+            var filename
+            
+            file.mv(`./public/upload/${Date.now() + file.name}`, (err) =>{
+                if (err) {
+                    filename = ''    
+                }else  filename = Date.now() + file.name
+                  
+            } )
+        }
+
+        let data = await  User.findByEmail(email)
+        let doesAccExist = data ? true: false
+        
+       
+    
         if(doesAccExist){
-            console.log("account already exists")
             req.flash('error', 'account already exists');
             res.render('signup')
         }else{
             const hash = await bcrypt.hash(password, 12)
-            const newUser = new User(username, email, hash, telephone, 0)
+            const newUser = new User(username, email, hash, '', 0)
             await newUser.save()
             let data = await  User.findByEmail(email)
-            req.session.user_id = data[0]['UserID']
+            req.session.user_id = data[0]['userID']
             req.flash('success', 'You Have Sucsessfully Creaated An Account!');
             res.redirect('/');
         }
@@ -50,7 +66,8 @@ const login =  async (req,res) =>{
         if(doesAccExist){
             const validPass = await bcrypt.compare(password, data[0]['password']) 
             if(validPass){
-                req.session.user_id = data[0]['UserID']
+                req.session.user_id = data['userID']
+                req.session.isAdmin = data["admin"] == 1 ? true : false
                 req.flash('success', 'You Have Sucsessfully Logged In!');
                 res.redirect('/');
             }else{
@@ -67,6 +84,28 @@ const logout =  async (req,res) =>{
     req.logout()
     req.flash('success', "Goodbye!");
     res.redirect('/');
+}
+
+const getProfilePage = async (req,res) =>{
+    const {id} = req.params
+    let profile = await User.findByID(id)
+    let products = await User.findAllItemsOfOwner(id)
+    let isAuthor = false
+    if(user.session.user_id == id){
+        isAuthor = true
+        return res.render('profile', {profile, products, isAuthor})
+    }
+    return res.render('profile', {profile, isAuthor})
+}
+
+
+module.exports = {
+    getRegisterPage,
+    register,
+    getLoginPage,
+    login,
+    logout,
+    getProfilePage
 }
 
 

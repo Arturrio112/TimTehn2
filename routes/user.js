@@ -10,5 +10,6 @@ router.get('/login', userController.getLoginPage)
 router.post('/login', userController.login)
 
 router.get('/logout', userController.logout)
+router.get('/profile/:id', userController.getProfilePage)
 
 module.exports = router
