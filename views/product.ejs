@@ -14,35 +14,37 @@
 <body>
     <section class="container-xxl">
         <div class="row justify-content-center align-items-center">
-            <div class="col-md-5 text-center text-md-starty">
+            <div class="col-md-5 text-center text-md-start">
                 <h5 class="display-3">
-                    <%= obj.name %>
+                    <%= data.name %>
                 </h5>
                 <p class="lead my-4">
-                    <%=obj.description %>
+                    <%=data.description %>
                 </p>
-                <% if(obj.auction==0) %>
+                <% if(data.auction==1) {%>
                     <h2>Current highest price:</h2>
                     <h2>
-                        <%=obj.price%>$
+                        <%=data.price%>$
                     </h2>
-                    <form action="/">
-                        <input type="number" id="price" class="form-control" name="price" min="<%=obj.price%>$" />
+                    <form action="/" method="GET">
                         <label class="form-label" for="price">Your bid</label>
+                        <input type="number" id="price" class="form-control" name="price" min="<%=data.price%>" value="<%=data.price%>"/>
                         <button class="btn btn-primary" id="button" onclick="alert('Your Bid was successful')"
                             type="submit">Bid</button>
-                    </form>
+                    </form><br>
 
 
-                    <% else{ %>
+                    <% }else{ %>
                         <h2>Price:</h2>
                         <h2>
-                            <%=obj.price%>$
+                            <%=data.price%>$
                         </h2>
+                        <form action="/" method="GET">
                         <button class="btn btn-primary" id="button"
-                            onclick="alert('Your purchase was successful')">Buy</button>
-                        <% } %>
-                            <button class="btn btn-primary" id="button" action="/">Back</button>
+                            onclick="alert('Your purchase was successful')">Buy</button><br>
+                        </form>
+                     <% } %>
+                    <a class="btn btn-primary" href="/" method="GET">Back</a>
             </div>
         </div>
     </section>

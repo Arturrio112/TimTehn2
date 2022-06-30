@@ -2,7 +2,7 @@ const {config} = require('./connectToDB')
 const sql = require('mssql')
 
 class User {
-    constructor(username, email, password, telephone="none", role){
+    constructor(username, email, password, telephone, role){
        this.username = username
        this.email = email
        this.password = password
@@ -20,7 +20,7 @@ class User {
 
 
         let conn = await sql.connect(config)
-        let newProduct = await  sql.query `INSERT INTO Users( email, password, telephone, role, createdAt) VALUES (${this.email}, ${this.password}, ${this.telephone},${this.role} ,${createAtDate}) `
+        let newProduct = await  sql.query `INSERT INTO Users( email, password, telephone, created_at, role) VALUES (${this.email}, ${this.password}, ${this.telephone}, ${createAtDate}, 'user') `
         conn.close()
         return newProduct
     }

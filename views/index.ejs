@@ -29,34 +29,35 @@
             <!-- navbar links -->
             <div class="collapse navbar-collapse justify-content-end align-center" id="main-nav">
                 <ul class="navbar-nav">
+                <% let loggedIn=false%>
                     <% if(loggedIn!=true) {%>
                         <li class="nav-item d-md-none ">
-                            <a class="nav-link text-light" href="/register">Sign up</a>
+                            <a class="nav-link text-light" href="/user/register">Sign up</a>
                         </li>
                         <li class="nav-item d-md-none ">
-                            <a class="nav-link text-light" href="/login">Log in</a>
+                            <a class="nav-link text-light" href="/user/login">Log in</a>
                         </li>
                         <li class="nav-item ms-2 d-none d-md-inline">
-                            <a class="btn btn-dark rounded-pill border border-3 ps-3 pe-3 py-2 " href="/register">Sign
+                            <a class="btn btn-dark rounded-pill border border-3 ps-3 pe-3 py-2 " href="/user/register" >Sign
                                 up</a>
                         </li>
                         <li class="nav-item ms-2 d-none d-md-inline">
-                            <a class="btn btn-dark rounded-pill border border-3 ps-3 pe-3 py-2 " href="/login">Log
+                            <a class="btn btn-dark rounded-pill border border-3 ps-3 pe-3 py-2 " href="/user/login">Log
                                 in</a>
                         </li>
-
-                        <% else%>
+                   
+                    <% }else{%>
                             <li class="nav-item">
-                                <a class="nav-link text-light fs-4 fw-bold" href="/profile">Profile</a>
+                                <a class="nav-link text-light fs-4 fw-bold" href="/profile" method="GET">Profile</a>
                             </li>
                             <li class="nav-item d-md-none ">
                                 <a class="nav-link text-light" href="/logout">Log Out</a>
                             </li>
                             <li class="nav-item ms-2 d-none d-md-inline">
-                                <a class="btn btn-dark rounded-pill border border-3 ps-3 pe-3 py-2 " href="/logout">Log
+                                <a class="btn btn-dark rounded-pill border border-3 ps-3 pe-3 py-2 " href="/logout" method="GET">Log
                                     Out</a>
                             </li>
-                            <% } %>
+                    <% } %>
                 </ul>
             </div>
         </div>

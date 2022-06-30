@@ -25,7 +25,7 @@
 
                                     <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
 
-                                    <form class="mx-1 mx-md-4 needs-validation" method="POST" novalidate>
+                                    <form class="mx-1 mx-md-4 needs-validation" method="POST" action="/user/register" enctype="multipart/form-data" novalidate>
 
 
                                         <div class="d-flex flex-row align-items-center mb-4">
@@ -67,7 +67,7 @@
                                                     <span class="input-group-text">
                                                         <i class="bi bi-telephone-fill"></i>
                                                     </span>
-                                                    <input type="text" id="telephone" class="form-control" name="phone"
+                                                    <input type="text" id="telephone" class="form-control" name="telephone"
                                                         required />
                                                     <div class="invalid-feedback">"Please enter phone number"</div>
                                                 </div>
@@ -108,7 +108,13 @@
 
                                             </div>
                                         </div>
+                                        <div class="d-flex flex-row align-items-center mb-4">
 
+                                            <div class="form-group">
+                                                <label for="file">Upload Profile Picture</label><Br>
+                                                <input type="file" class="form-control-file" id="file" name="file">
+                                            </div>
+                                        </div>
 
                                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                                             <button type="submit" class="btn btn-primary btn-lg">Register</button>

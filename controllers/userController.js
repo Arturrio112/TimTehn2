@@ -9,7 +9,7 @@ const getRegisterPage =  async (req,res) =>{
 const register = async (req,res) =>{
     
     try{
-        const {password, username, email } = req.body
+        const {password, username, email, telephone } = req.body
        
         let data = await  User.findByEmail(email)
         let doesAccExist = data.length == 0 ? false : true
@@ -20,10 +20,10 @@ const register = async (req,res) =>{
             res.render('signup')
         }else{
             const hash = await bcrypt.hash(password, 12)
-            const newUser = new User(username, email, hash, '', 0)
+            const newUser = new User(username, email, hash, telephone, 0)
             await newUser.save()
             let data = await  User.findByEmail(email)
-            req.session.user_id = data[0]['userID']
+            req.session.user_id = data[0]['UserID']
             req.flash('success', 'You Have Sucsessfully Creaated An Account!');
             res.redirect('/');
         }
@@ -50,7 +50,7 @@ const login =  async (req,res) =>{
         if(doesAccExist){
             const validPass = await bcrypt.compare(password, data[0]['password']) 
             if(validPass){
-                req.session.user_id = data[0]['userID']
+                req.session.user_id = data[0]['UserID']
                 req.flash('success', 'You Have Sucsessfully Logged In!');
                 res.redirect('/');
             }else{

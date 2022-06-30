@@ -15,7 +15,7 @@ class Product {
 
     static async getAllProducts(){
         let conn = await sql.connect(config)
-        let result = await sql.query `SELECT * FROM products`
+        let result = await sql.query `SELECT * FROM Produkts`
         result = result.recordset
         conn.close()
         return result
@@ -23,15 +23,15 @@ class Product {
 
     static async getProductWithID(id){
         let conn = await sql.connect(config)
-        let result = await sql.query `SELECT * FROM products WHERE ProductID = ${id}`
-        result = result.recordset
+        let result = await sql.query `SELECT * FROM Produkts WHERE ProduktsID= ${id}`
+        result = result.recordset[0]
         conn.close()
         return result
     }
 
     static async updateProduct(id, data){
         let conn = await sql.connect(config)
-        //let result = await sql.query `UPDATE products SET name=${}, description=${}, price= ${}, WHERE ProductID = ${id}`
+        //let result = await sql.query `UPDATE Produkts SET name=${}, description=${}, price= ${}, WHERE ProductID = ${id}`
         result = result.recordset
         conn.close()
         return result
@@ -39,7 +39,7 @@ class Product {
 
     static async deleteProduct(id){
         let conn = await sql.connect(config)
-        await sql.query `DELETE FROM Products WHERE ProductID = ${id}`
+        await sql.query `DELETE FROM Produkts WHERE ProduktsID = ${id}`
         
         conn.close()
     }

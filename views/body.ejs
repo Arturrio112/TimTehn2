@@ -4,14 +4,16 @@
     </div>
 </section>
 
-<section class="container-xxl">
-    <div class="card-group justify-content-center align-content-center my-5 g-4">
+<section class="container-xxl align-content-center">
+    <div class="row justify-content-center align-content-center my-5 g-4">
         <% for(const obj of data) {%>
-            <div class="col-8 col-lg-4 d-flex align-items-stretch">
+            <div class="col-sm-8 col-lg-4 d-flex justify-content-center align-items-stretch mb-5">
                 <div class="card border-2 border-dark">
                     <%if(obj.auction==1) { %>
-                        <div class="card-header text-center text-dnager fw-bold">Auction</div>
-                        <% } %>
+                        <div class="card-header text-center text-danger fw-bold">Auction</div>
+                        <% }else{ %>
+                            <div class="card-header text-center fw-bold">Sale</div>
+                    <%}%>
                             <img class="card-img-top" src="/img/logg.png" alt="Card image ">
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title">
@@ -20,7 +22,7 @@
                                 <p class="card-text">
                                     <%= obj.description%>
                                 </p>
-                                <a href="/product/<%= data[0].productID %> " class="btn btn-primary">Check Out</a>
+                                <a href="/product/<%= obj.ProduktsID %> " class="btn btn-primary" action="GET">Check Out</a>
                             </div>
 
                 </div>

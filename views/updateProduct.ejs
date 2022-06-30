@@ -24,7 +24,7 @@
 
                                     <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Update Product</p>
 
-                                    <form class="mx-1 mx-md-4" method="GET">
+                                    <form class="mx-1 mx-md-4" method="post">
 
 
                                         <div class="d-flex flex-row align-items-center mb-4">
@@ -58,6 +58,13 @@
                                                 <label class="form-label" for="price">Price</label>
                                             </div>
 
+                                        </div>
+                                        <div class="d-flex flex-row align-items-center mb-4">
+
+                                            <div class="form-group">
+                                                <label for="file">Update picture</label><Br>
+                                                <input type="file" class="form-control-file" id="file" name="file" value="<%= obj.picture %>">
+                                            </div>
                                         </div>
                                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                                             <button type="submit" class="btn btn-primary btn-lg">Update</button>
